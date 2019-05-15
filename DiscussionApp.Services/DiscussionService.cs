@@ -47,8 +47,8 @@ namespace DiscussionApp.Services
                                 new DiscussionListItem
                                 {
                                     DiscussionId = e.DiscussionId,
-                                    FilmId = e.FilmId,
                                     MediaType = e.MediaType,
+                                    FilmId = e.FilmId,
                                     Title = e.Title,
                                     CreatedUtc = e.CreatedUtc,
                                     ModifiedUtc = e.ModifiedUtc
@@ -70,10 +70,10 @@ namespace DiscussionApp.Services
                     new DiscussionDetail
                     {
                         DiscussionId = entity.DiscussionId,
+                        MediaType = entity.MediaType,
                         FilmId = entity.FilmId,
                         //TelevisionId = entity.TelevisionId,
                         //SportId = entity.SportId,
-                        MediaType = entity.MediaType,
                         Title = entity.Title,
                         Comment = entity.Comment,
                         Film = entity.Film,

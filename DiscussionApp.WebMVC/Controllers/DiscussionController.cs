@@ -13,6 +13,8 @@ namespace DiscussionApp.WebMVC.Controllers
     public class DiscussionController : Controller
     {
         FilmService filmService = new FilmService();
+        TelevisionService tvService = new TelevisionService();
+        SportService sportService = new SportService();
 
         // GET: Discussion
         public ActionResult Index()
@@ -26,15 +28,26 @@ namespace DiscussionApp.WebMVC.Controllers
         // GET: Discussion/Create
         public ActionResult Create()
         {
-            FilmService filmService = new FilmService();
-            ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
-            
+            //FilmService filmService = new FilmService();
             //TelevisionService tvService = new TelevisionService();
             //SportService sportService = new SportService();
-            
-            
-            //ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title");
-            //ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "");
+
+            //if ()
+            //{
+                
+            //}
+            //else if ()
+            //{
+                
+            //}
+            //else
+            //{
+                
+            //}
+
+            ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
+            ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title");
+            ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "");
 
             return View();
         }
@@ -58,6 +71,7 @@ namespace DiscussionApp.WebMVC.Controllers
             };
 
             ModelState.AddModelError("", "Note could not be created.");
+            //ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
             return View(model);
         }
 
@@ -91,7 +105,7 @@ namespace DiscussionApp.WebMVC.Controllers
                 //Sport = detail.Sport
             };
 
-            ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
+            ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title", detail.FilmId);
             return View(model);
         }
 
@@ -110,7 +124,7 @@ namespace DiscussionApp.WebMVC.Controllers
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
-            
+
             var service = new DiscussionService();
 
             if (service.UpdateDiscussion(model))
@@ -118,7 +132,6 @@ namespace DiscussionApp.WebMVC.Controllers
                 TempData["SaveResult"] = "The discussion was updated.";
                 return RedirectToAction("Index");
             }
-
 
             ModelState.AddModelError("", "The discussion could not be updated.");
             return View();
