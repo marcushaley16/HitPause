@@ -1,0 +1,127 @@
+﻿@model DiscussionApp.Models.FilmDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FilmDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FilmId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilmId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Writer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Writer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stars)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cinematographer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cinematographer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Synopsis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Synopsis)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Released)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Released)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre1) /
+            @Html.DisplayFor(model => model.Genre2)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Genre2)
+        </dt>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Runtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Runtime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FilmId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

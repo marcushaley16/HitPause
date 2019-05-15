@@ -18,16 +18,20 @@ namespace DiscussionApp.Data
     {
         [Key]
         public int DiscussionId { get; set; }
+        public int FilmId { get; set; }
+        //public int TelevisionId { get; set; }
+        //public int SportId { get; set; }
+        public MediaType MediaType { get; set; }
         [Required]
-        [MinLength(5, ErrorMessage = "Titles must be at least 5 characters long.")]
-        [MaxLength(30, ErrorMessage = "Titles are limited to 30 characters.")]
+        [MinLength(2, ErrorMessage = "Titles must be at least 2 characters long.")]
+        [MaxLength(50, ErrorMessage = "Titles are limited to 50 characters.")]
         public string Title { get; set; }
         [Required]
-        public DateTime TimeCreated { get; set; }
-        [Required]
-        public MediaType MediaType { get; set; }
-        //[Required]
-        //public int MediaId { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
         public string Comment { get; set; }
+        public virtual Film Film { get; set; }
+        //public virtual TVShow TVShow { get; set; }
+        //public virtual Sport Sport { get; set; }
     }
 }

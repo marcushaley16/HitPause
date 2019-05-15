@@ -1,37 +1,15 @@
-﻿using System;
+﻿using DiscussionApp.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscussionApp.Data
+namespace DiscussionApp.Models
 {
-    public enum League
+    public class SportCreate
     {
-        Bundesliga,
-        PremierLeague,
-        LaLiga,
-        MensTennis,
-        MLB,
-        MLS,
-        NBA,
-        NCAABasketball,
-        NCAAFootball,
-        NFL,
-        NHL,
-        None,
-        Other,
-        SerieA,
-        UEFAChampionsLeague,
-        WNBA,
-        WomensTennis
-    }
-
-    public class Sport
-    {
-        [Key]
-        public int SportId { get; set; }
         [Required]
         public MediaType MediaType { get; set; }
         [Required]

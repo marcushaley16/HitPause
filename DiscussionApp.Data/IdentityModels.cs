@@ -34,6 +34,9 @@ namespace DiscussionApp.WebMVC.Data
         }
 
         public DbSet<Discussion> Discussions { get; set; }
+        public DbSet<Film> Films { get; set; }
+        public DbSet<TVShow> TVShows { get; set; } 
+        public DbSet<Sport> Sports { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -46,6 +49,7 @@ namespace DiscussionApp.WebMVC.Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
         }
+        
     }
 
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>

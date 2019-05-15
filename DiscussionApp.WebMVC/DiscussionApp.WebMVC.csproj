@@ -169,8 +169,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DiscussionController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SportController.cs" />
+    <Compile Include="Controllers\TelevisionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +240,24 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Discussion\Index.cshtml" />
     <Content Include="Views\Discussion\Create.cshtml" />
+    <Content Include="Views\Film\Index.cshtml" />
+    <Content Include="Views\Film\Create.cshtml" />
+    <Content Include="Views\Film\Details.cshtml" />
+    <Content Include="Views\Film\Edit.cshtml" />
+    <Content Include="Views\Film\Delete.cshtml" />
+    <Content Include="Views\Television\Index.cshtml" />
+    <Content Include="Views\Television\Create.cshtml" />
+    <Content Include="Views\Television\Details.cshtml" />
+    <Content Include="Views\Television\Edit.cshtml" />
+    <Content Include="Views\Television\Delete.cshtml" />
+    <Content Include="Views\Sport\Index.cshtml" />
+    <Content Include="Views\Sport\Create.cshtml" />
+    <Content Include="Views\Sport\Details.cshtml" />
+    <Content Include="Views\Sport\Edit.cshtml" />
+    <Content Include="Views\Sport\Delete.cshtml" />
+    <Content Include="Views\Discussion\Details.cshtml" />
+    <Content Include="Views\Discussion\Edit.cshtml" />
+    <Content Include="Views\Discussion\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,6 +283,10 @@
     <ProjectReference Include="..\DiscussionApp.Models\DiscussionApp.Models.csproj">
       <Project>{9ab989dd-1ef3-4397-bdde-eddc3363944c}</Project>
       <Name>DiscussionApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiscussionApp.Services\DiscussionApp.Services.csproj">
+      <Project>{495F20B6-0979-48C4-8A4F-DCA85C7DF39F}</Project>
+      <Name>DiscussionApp.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

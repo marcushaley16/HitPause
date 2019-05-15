@@ -7,13 +7,13 @@ namespace DiscussionApp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ModifiedparameternameinDiscussionclass : IMigrationMetadata
+    public sealed partial class RemovedquotepropertyfromFilmclass : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModifiedparameternameinDiscussionclass));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedquotepropertyfromFilmclass));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905081720477_Modified parameter name in Discussion class"; }
+            get { return "201905101638519_Removed quote property from Film class"; }
         }
         
         string IMigrationMetadata.Source

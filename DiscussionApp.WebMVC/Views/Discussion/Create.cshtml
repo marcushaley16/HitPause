@@ -7,35 +7,54 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>DiscussionCreate</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MediaType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.MediaType, "Select Media Type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MediaType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*@if (Model.MediaType == DiscussionApp.Data.MediaType.Film)*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.FilmId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("FilmId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FilmId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        @*else if (Model.MediaType == DiscussionApp.Data.MediaType.Television)*@
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.TelevisionId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("TelevisionId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TelevisionId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @*else*@
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.SportId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SportId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SportId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MediaType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MediaType", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.MediaType, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TimeCreated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TimeCreated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TimeCreated, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -46,6 +65,30 @@
                 @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Film, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Film, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Film, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TVShow, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TVShow, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TVShow, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sport, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sport, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sport, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

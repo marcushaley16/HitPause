@@ -1,0 +1,88 @@
+﻿@model DiscussionApp.Models.DiscussionDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DiscussionDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscussionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscussionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilmId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilmId)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TelevisionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelevisionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SportId)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.SportId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

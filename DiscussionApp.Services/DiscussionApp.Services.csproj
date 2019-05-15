@@ -54,11 +54,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiscussionService.cs" />
+    <Compile Include="FilmService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SportService.cs" />
+    <Compile Include="TelevisionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiscussionApp.Data\DiscussionApp.Data.csproj">
+      <Project>{52ef7ba3-ad8f-4b4f-a73a-3bfb64a1e974}</Project>
+      <Name>DiscussionApp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiscussionApp.Models\DiscussionApp.Models.csproj">
+      <Project>{9ab989dd-1ef3-4397-bdde-eddc3363944c}</Project>
+      <Name>DiscussionApp.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,82 @@
+﻿@model DiscussionApp.Models.DiscussionDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DiscussionDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscussionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscussionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilmId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilmId)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TelevisionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelevisionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SportId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SportId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DiscussionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

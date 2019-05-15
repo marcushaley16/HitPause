@@ -1,0 +1,163 @@
+﻿@model DiscussionApp.Models.TVShowDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TVShowDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MediaType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MediaType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelevisionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelevisionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Network)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Network)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Runtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Runtime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Synopsis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Synopsis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stars)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stars)
+        </dd>
+
+        @*@if (string.IsNullOrEmpty(model.Genre2.ToString()))
+        {
+            @Html.HiddenFor(model.Genre2)
+        }
+        else
+        {*@
+
+        @*}*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.DateAired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAired)
+        </dd>*@
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Writer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Writer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cinematographer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cinematographer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editor)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TelevisionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

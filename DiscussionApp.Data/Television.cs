@@ -27,6 +27,7 @@ namespace DiscussionApp.Data
         Mystery,
         News,
         Noir,
+        None,
         Reality,
         Romance,
         SciFi,
@@ -38,7 +39,7 @@ namespace DiscussionApp.Data
         Western
     }
 
-    public class Television
+    public class TVShow
     {
         [Key]
         public int TelevisionId { get; set; }
@@ -47,27 +48,28 @@ namespace DiscussionApp.Data
         [Required]
         public string Title { get; set; }
         [Required]
+        public string Creator { get; set; }
         public string Director { get; set; }
-        [Required]
         public string Writer { get; set; }
         [Required]
         public string Stars { get; set; }
         [Required]
         public string Synopsis { get; set; }
         [Required]
-        public TVGenreType Genre { get; set; }
+        public TVGenreType Genre1 { get; set; }
+        public TVGenreType Genre2 { get; set; }
         [Required]
         public string Network { get; set; }
         [Required]
+        public bool Released { get; set; }
+        [Required]
+        public string Year { get; set; }
         public string DateAired { get; set; }
         [Required]
         public int Runtime { get; set; }
         [Required]
         public string Rating { get; set; }
-        public string Creator { get; set; }
         public string Cinematographer { get; set; }
         public string Editor { get; set; }
-        public string Quote { get; set; }
-
     }
 }

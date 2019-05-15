@@ -13,11 +13,35 @@ namespace DiscussionApp.Data.Migrations
                     {
                         DiscussionId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 30),
-                        TimeCreated = c.DateTime(nullable: false),
                         MediaType = c.Int(nullable: false),
-                        Comments = c.String(),
+                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        ModifiedUtc = c.DateTimeOffset(precision: 7),
+                        Comment = c.String(),
                     })
                 .PrimaryKey(t => t.DiscussionId);
+            
+            CreateTable(
+                "dbo.Film",
+                c => new
+                    {
+                        FilmId = c.Int(nullable: false, identity: true),
+                        MediaType = c.Int(nullable: false),
+                        Title = c.String(nullable: false),
+                        Director = c.String(nullable: false),
+                        Writer = c.String(nullable: false),
+                        Stars = c.String(nullable: false),
+                        Cinematographer = c.String(nullable: false),
+                        Editor = c.String(nullable: false),
+                        Synopsis = c.String(nullable: false, maxLength: 150),
+                        Genre1 = c.Int(nullable: false),
+                        Genre2 = c.Int(nullable: false),
+                        Year = c.String(nullable: false, maxLength: 4),
+                        Released = c.Boolean(nullable: false),
+                        Runtime = c.Int(nullable: false),
+                        Rating = c.String(nullable: false, maxLength: 5),
+                        Quote = c.String(),
+                    })
+                .PrimaryKey(t => t.FilmId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -42,6 +66,47 @@ namespace DiscussionApp.Data.Migrations
                 .ForeignKey("dbo.ApplicationUser", t => t.ApplicationUser_Id)
                 .Index(t => t.IdentityRole_Id)
                 .Index(t => t.ApplicationUser_Id);
+            
+            CreateTable(
+                "dbo.Sport",
+                c => new
+                    {
+                        SportId = c.Int(nullable: false, identity: true),
+                        MediaType = c.Int(nullable: false),
+                        League = c.Int(nullable: false),
+                        HomeTeam = c.String(nullable: false),
+                        AwayTeam = c.String(nullable: false),
+                        Location = c.String(nullable: false),
+                        Time = c.DateTime(nullable: false),
+                        Network = c.String(),
+                        Score = c.String(),
+                    })
+                .PrimaryKey(t => t.SportId);
+            
+            CreateTable(
+                "dbo.TVShow",
+                c => new
+                    {
+                        TelevisionId = c.Int(nullable: false, identity: true),
+                        MediaType = c.Int(nullable: false),
+                        Title = c.String(nullable: false),
+                        Creator = c.String(nullable: false),
+                        Director = c.String(),
+                        Writer = c.String(),
+                        Stars = c.String(nullable: false),
+                        Synopsis = c.String(nullable: false),
+                        Genre1 = c.Int(nullable: false),
+                        Genre2 = c.Int(nullable: false),
+                        Network = c.String(nullable: false),
+                        Released = c.Boolean(nullable: false),
+                        Year = c.String(nullable: false),
+                        DateAired = c.String(),
+                        Runtime = c.Int(nullable: false),
+                        Rating = c.String(nullable: false),
+                        Cinematographer = c.String(),
+                        Editor = c.String(),
+                    })
+                .PrimaryKey(t => t.TelevisionId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -104,8 +169,11 @@ namespace DiscussionApp.Data.Migrations
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
+            DropTable("dbo.TVShow");
+            DropTable("dbo.Sport");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.Film");
             DropTable("dbo.Discussion");
         }
     }
