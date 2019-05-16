@@ -17,9 +17,9 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.MediaType, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.MediaType, "Media Type", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EnumDropDownListFor(x => x.MediaType, "Select Genre", new { @class = "form-control" })
+            @Html.EnumDropDownListFor(model => model.MediaType, "Select Media Type", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.MediaType, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -99,7 +99,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Genre1, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Genre1, "Genre Type One", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EnumDropDownListFor(x => x.Genre1, "Select Genre", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Genre1, "", new { @class = "text-danger" })
@@ -107,7 +107,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Genre2, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Genre2, "Genre Type Two", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EnumDropDownListFor(x => x.Genre2, "Select Genre", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Genre2, "", new { @class = "text-danger" })

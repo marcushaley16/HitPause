@@ -17,7 +17,7 @@ namespace DiscussionApp.Models
         public int SportId { get; set; }
         [Display(Name = "Type")]
         public MediaType MediaType { get; set; }
-        public string Title { get; set; }
+        public string DiscussionTitle { get; set; }
         public DateTimeOffset CreatedUtc {get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }
         public string Comment { get; set; }

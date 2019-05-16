@@ -20,7 +20,7 @@ namespace DiscussionApp.Models
         [Display(Name="Type")]
         public MediaType MediaType { get; set; }
 
-        public string Title { get; set; }
+        public string DiscussionTitle { get; set; }
 
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }

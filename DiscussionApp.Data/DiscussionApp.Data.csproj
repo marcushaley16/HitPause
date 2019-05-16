@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201905151518135_Modified properties in Discussion class.Designer.cs">
       <DependentUpon>201905151518135_Modified properties in Discussion class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905161554240_Changed Discussion property Title to DiscussionTitle.cs" />
+    <Compile Include="Migrations\201905161554240_Changed Discussion property Title to DiscussionTitle.Designer.cs">
+      <DependentUpon>201905161554240_Changed Discussion property Title to DiscussionTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sport.cs" />
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905151518135_Modified properties in Discussion class.resx">
       <DependentUpon>201905151518135_Modified properties in Discussion class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905161554240_Changed Discussion property Title to DiscussionTitle.resx">
+      <DependentUpon>201905161554240_Changed Discussion property Title to DiscussionTitle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

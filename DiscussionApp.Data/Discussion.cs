@@ -25,7 +25,7 @@ namespace DiscussionApp.Data
         [Required]
         [MinLength(2, ErrorMessage = "Titles must be at least 2 characters long.")]
         [MaxLength(50, ErrorMessage = "Titles are limited to 50 characters.")]
-        public string Title { get; set; }
+        public string DiscussionTitle { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset? ModifiedUtc { get; set; }

@@ -12,7 +12,7 @@ namespace DiscussionApp.Models
         public int DiscussionId { get; set; }
         public MediaType MediaType { get; set; }
         public int FilmId { get; set; }
-        public string Title { get; set; }
+        public string DiscussionTitle { get; set; }
         public string Comment { get; set; }
         public virtual Film Film { get; set; }
         //public virtual TVShow TVShow { get; set; }

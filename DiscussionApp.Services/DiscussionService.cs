@@ -19,7 +19,7 @@ namespace DiscussionApp.Services
                     MediaType = model.MediaType,
                     FilmId = model.FilmId,
                     //TelevisionId = model.TelevisionId,
-                    Title = model.Title,
+                    DiscussionTitle = model.DiscussionTitle,
                     Comment = model.Comment,
                     Film = model.Film,
                     //TVShow = model.TVShow,
@@ -49,7 +49,7 @@ namespace DiscussionApp.Services
                                     DiscussionId = e.DiscussionId,
                                     MediaType = e.MediaType,
                                     FilmId = e.FilmId,
-                                    Title = e.Title,
+                                    DiscussionTitle = e.DiscussionTitle,
                                     CreatedUtc = e.CreatedUtc,
                                     ModifiedUtc = e.ModifiedUtc
                                 }
@@ -74,7 +74,7 @@ namespace DiscussionApp.Services
                         FilmId = entity.FilmId,
                         //TelevisionId = entity.TelevisionId,
                         //SportId = entity.SportId,
-                        Title = entity.Title,
+                        DiscussionTitle = entity.DiscussionTitle,
                         Comment = entity.Comment,
                         Film = entity.Film,
                         //TVShow = entity.TVShow,
@@ -96,11 +96,26 @@ namespace DiscussionApp.Services
 
                 entity.MediaType = model.MediaType;
                 entity.FilmId = model.FilmId;
-                entity.Title = model.Title;
+                entity.DiscussionTitle = model.DiscussionTitle;
                 entity.Comment = model.Comment;
                 entity.Film = model.Film;
                 //entity.TVShow = model.TVShow;
                 //entity.Sport = model.Sport;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool AddComment(DiscussionEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Discussions
+                        .Single(e => e.DiscussionId == model.DiscussionId);
+
+                entity.Comment = model.Comment;
 
                 return ctx.SaveChanges() == 1;
             }
