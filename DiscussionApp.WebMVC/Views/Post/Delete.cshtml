@@ -1,0 +1,59 @@
+﻿@model DiscussionApp.Models.PostListItem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this post?</h3>
+<div>
+    <h4>Delete Post</h4>
+    <hr />
+    @Html.HiddenFor(model => model.DiscussionId)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatorUsername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatorUsername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedUTC.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedUTC.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedUTC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedUTC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Discussion", "Index", new { discussionId = ViewBag.Discussion })
+        </div>
+
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</div>

@@ -63,6 +63,19 @@ namespace DiscussionApp.Services
             }
         }
 
+        //public IQueryable<Film> GetFilmsByType(MediaType mediaType)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var filmList = ctx.Films.Where(x => x.MediaType == MediaType.Film).ToList().Select(item => new Film
+        //        {
+        //            MediaType = item.MediaType,
+        //            Title = item.Title
+        //        }).AsQueryable();
+        //        return filmList;
+        //    }
+        //}
+
         public FilmDetail GetFilmById(int filmId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -134,6 +147,13 @@ namespace DiscussionApp.Services
 
                 return ctx.SaveChanges() == 1;
             }
+        }
+
+        // Helper Methods
+        public string GetFilmTitle(int filmId)
+        {
+            using (var ctx = new ApplicationDbContext())
+                return ctx.Films.Where(e => e.FilmId == filmId).Single().Title;
         }
     }
 }

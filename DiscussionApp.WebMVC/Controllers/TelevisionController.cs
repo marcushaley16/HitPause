@@ -12,6 +12,8 @@ namespace DiscussionApp.WebMVC.Controllers
     [Authorize]
     public class TelevisionController : Controller
     {
+        TelevisionService tvService = new TelevisionService();
+
         // GET: Show
         public ActionResult Index()
         {
@@ -24,6 +26,10 @@ namespace DiscussionApp.WebMVC.Controllers
         // GET: Show/Create
         public ActionResult Create()
         {
+            //var service = new TelevisionService();
+            //var detail = service.GetTVShowById(televisionId);
+
+            //ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title", detail.FilmId);
             return View();
         }
 
@@ -56,6 +62,8 @@ namespace DiscussionApp.WebMVC.Controllers
         {
             var service = new TelevisionService();
             var model = service.GetTVShowById(id);
+
+            ViewBag.TVTitle = service.GetTVTitle(id);
 
             return View(model);
         }

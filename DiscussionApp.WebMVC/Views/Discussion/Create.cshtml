@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>New Discussion</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>DiscussionCreate</h4>
+        <h4>Create New Discussion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -29,22 +29,22 @@
 
         }*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.FilmId, "Film", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("FilmId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FilmId, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         @*else if (Model.MediaType == DiscussionApp.Data.MediaType.Television)*@
-        @*<div class="form-group">
+        <div class="form-group">
                 @Html.LabelFor(model => model.TelevisionId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("TelevisionId", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.TelevisionId, "", new { @class = "text-danger" })
                 </div>
-            </div>*@
+            </div>
         @*else*@
         @*<div class="form-group">
                 @Html.LabelFor(model => model.SportId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -55,7 +55,7 @@
             </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DiscussionTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DiscussionTitle, "Discussion Title", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DiscussionTitle, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DiscussionTitle, "", new { @class = "text-danger" })
@@ -63,10 +63,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Body, new { @cols = "100", @rows = "8", @style = "width: 100%" })
+                @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
 

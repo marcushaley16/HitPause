@@ -13,7 +13,6 @@ namespace DiscussionApp.Services
     {
         public bool CreateTVShow(TVShowCreate model)
         {
-            // combinedgenre = model.genre1 + model.genre2
             var entity =
                     new TVShow()
                     {
@@ -111,7 +110,6 @@ namespace DiscussionApp.Services
                         .TVShows
                         .Single(e => e.TelevisionId == model.TelevisionId);
 
-                //entity.TelevisionId = model.TelevisionId;
                 entity.MediaType = model.MediaType;
                 entity.Title = model.Title;
                 entity.Year = model.Year;
@@ -147,6 +145,13 @@ namespace DiscussionApp.Services
 
                 return ctx.SaveChanges() == 1;
             }
+        }
+
+        // Helper Methods
+        public string GetTVTitle(int televisionId)
+        {
+            using (var ctx = new ApplicationDbContext())
+                return ctx.TVShows.Where(e => e.TelevisionId == televisionId).Single().Title;
         }
     }
 }

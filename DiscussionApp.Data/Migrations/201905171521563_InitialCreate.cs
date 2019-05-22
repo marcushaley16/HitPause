@@ -11,14 +11,16 @@ namespace DiscussionApp.Data.Migrations
                 "dbo.Discussion",
                 c => new
                     {
-                        DiscussionId = c.Int(nullable: false, identity: true),
-                        Title = c.String(nullable: false, maxLength: 30),
+                        DiscussionId = c.Guid(nullable: false),
+                        CreatorId = c.Guid(nullable: false),
+                        FilmId = c.Int(nullable: false),
                         MediaType = c.Int(nullable: false),
-                        CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
-                        ModifiedUtc = c.DateTimeOffset(precision: 7),
-                        Comment = c.String(),
+                        DiscussionTitle = c.String(nullable: false, maxLength: 50),
+                        CreatedUTC = c.DateTimeOffset(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.DiscussionId);
+                .PrimaryKey(t => t.DiscussionId)
+                .ForeignKey("dbo.Film", t => t.FilmId, cascadeDelete: true)
+                .Index(t => t.FilmId);
             
             CreateTable(
                 "dbo.Film",
@@ -32,16 +34,28 @@ namespace DiscussionApp.Data.Migrations
                         Stars = c.String(nullable: false),
                         Cinematographer = c.String(nullable: false),
                         Editor = c.String(nullable: false),
-                        Synopsis = c.String(nullable: false, maxLength: 150),
+                        Synopsis = c.String(nullable: false),
                         Genre1 = c.Int(nullable: false),
                         Genre2 = c.Int(nullable: false),
                         Year = c.String(nullable: false, maxLength: 4),
                         Released = c.Boolean(nullable: false),
                         Runtime = c.Int(nullable: false),
                         Rating = c.String(nullable: false, maxLength: 5),
-                        Quote = c.String(),
                     })
                 .PrimaryKey(t => t.FilmId);
+            
+            CreateTable(
+                "dbo.Post",
+                c => new
+                    {
+                        PostId = c.Guid(nullable: false),
+                        DiscussionId = c.Guid(nullable: false),
+                        CreatorId = c.Guid(nullable: false),
+                        CreatedUTC = c.DateTimeOffset(nullable: false, precision: 7),
+                        ModifiedUTC = c.DateTimeOffset(precision: 7),
+                        Body = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.PostId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -162,10 +176,12 @@ namespace DiscussionApp.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Discussion", "FilmId", "dbo.Film");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Discussion", new[] { "FilmId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
@@ -173,6 +189,7 @@ namespace DiscussionApp.Data.Migrations
             DropTable("dbo.Sport");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
+            DropTable("dbo.Post");
             DropTable("dbo.Film");
             DropTable("dbo.Discussion");
         }

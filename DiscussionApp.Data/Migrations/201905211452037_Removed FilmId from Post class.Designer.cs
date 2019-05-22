@@ -7,13 +7,13 @@ namespace DiscussionApp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ModifiedpropertiesforDiscussionclass : IMigrationMetadata
+    public sealed partial class RemovedFilmIdfromPostclass : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModifiedpropertiesforDiscussionclass));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemovedFilmIdfromPostclass));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905141831103_Modified properties for Discussion class"; }
+            get { return "201905211452037_Removed FilmId from Post class"; }
         }
         
         string IMigrationMetadata.Source

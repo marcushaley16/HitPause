@@ -34,6 +34,7 @@ namespace DiscussionApp.WebMVC.Data
         }
 
         public DbSet<Discussion> Discussions { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<TVShow> TVShows { get; set; } 
         public DbSet<Sport> Sports { get; set; }

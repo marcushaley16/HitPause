@@ -36,7 +36,8 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @*@Html.DisplayFor(modelItem => item.Title)*@
+                @Html.ActionLink(item.Title, "Details", new { id = item.TelevisionId })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Year)
@@ -74,7 +75,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TelevisionId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.TelevisionId }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.TelevisionId }) |*@
                 @Html.ActionLink("Delete", "Delete", new { id = item.TelevisionId })
             </td>
         </tr>

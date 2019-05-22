@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DiscussionApp.Models.PostListItem>
+<div id="top"></div>
+
+@{
+    ViewBag.Title = ViewBag.DiscussionTitle;
+}
+
+<h2>Discussion: @ViewBag.DiscussionTitle</h2>
+
+<p>
+    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @Html.ActionLink("View Media Details", "Details", new { ViewBag.FilmId }) | <a href="#new_reply">Go to bottom</a>
+</p>
+@{
+    int i = 1;
+}
+@foreach (var item in Model)
+{
+    <div class="container-fluid post">
+        <div class="datestamp">
+            <span>
+                #@i  posted at @Html.DisplayFor(modelItem => item.CreatedUTC.DateTime)
+                @if (item.ModifiedUTC != null)
+                {
+                    <span> - (Modified @Html.DisplayFor(modelItem => item.ModifiedUTC))</span>
+                }
+            </span>
+            <span class="controls">
+                <span>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PostId }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.PostId }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PostId })
+                </span>
+            </span>
+        </div>
+    </div>
+    <div class="row postmain">
+        <div class="col-xs-2 creatorinfo">
+            <span>@Html.DisplayFor(modelItem => item.CreatorUsername)</span>
+        </div>
+        <div class="col-xs-10 body">
+            @{
+                string[] content = item.Body.Split('\n');
+            }
+            <p>
+                @foreach (string line in content)
+                {
+                    @line<br />
+                }
+            </p>
+        </div>
+    </div>
+    i++;
+}
+<br />
+<div id="new_reply" class="newreply">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <textarea name="body" placeholder="New Reply" rows="4"></textarea>
+        <br />
+        <input type="submit" value="Post" />
+    }
+</div>
+
+<p>
+    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @*@Html.ActionLink("Media Details", "Details", "Film", new { filmId = item.FilmId.ToString() }, null)*@ |@*@Html.ActionLink("New Reply", "Create") |*@ <a href="#top">Jump to Top</a>
+</p>

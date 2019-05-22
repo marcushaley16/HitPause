@@ -57,41 +57,21 @@
     <Compile Include="Discussion.cs" />
     <Compile Include="Film.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201905101557242_InitialCreate.cs" />
-    <Compile Include="Migrations\201905101557242_InitialCreate.Designer.cs">
-      <DependentUpon>201905101557242_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201905171521563_InitialCreate.cs" />
+    <Compile Include="Migrations\201905171521563_InitialCreate.Designer.cs">
+      <DependentUpon>201905171521563_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905101638519_Removed quote property from Film class.cs" />
-    <Compile Include="Migrations\201905101638519_Removed quote property from Film class.Designer.cs">
-      <DependentUpon>201905101638519_Removed quote property from Film class.cs</DependentUpon>
+    <Compile Include="Migrations\201905211446264_Updated properties for Post class.cs" />
+    <Compile Include="Migrations\201905211446264_Updated properties for Post class.Designer.cs">
+      <DependentUpon>201905211446264_Updated properties for Post class.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905140026571_Removed limitations on number of characters on film synopses.cs" />
-    <Compile Include="Migrations\201905140026571_Removed limitations on number of characters on film synopses.Designer.cs">
-      <DependentUpon>201905140026571_Removed limitations on number of characters on film synopses.cs</DependentUpon>
+    <Compile Include="Migrations\201905211452037_Removed FilmId from Post class.cs" />
+    <Compile Include="Migrations\201905211452037_Removed FilmId from Post class.Designer.cs">
+      <DependentUpon>201905211452037_Removed FilmId from Post class.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905141338184_Added value of none to genre and league enums.cs" />
-    <Compile Include="Migrations\201905141338184_Added value of none to genre and league enums.Designer.cs">
-      <DependentUpon>201905141338184_Added value of none to genre and league enums.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905141831103_Modified properties for Discussion class.cs" />
-    <Compile Include="Migrations\201905141831103_Modified properties for Discussion class.Designer.cs">
-      <DependentUpon>201905141831103_Modified properties for Discussion class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151349259_removed televisionId property from discussion class.cs" />
-    <Compile Include="Migrations\201905151349259_removed televisionId property from discussion class.Designer.cs">
-      <DependentUpon>201905151349259_removed televisionId property from discussion class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151407209_Removed televisionId from Discussion class.cs" />
-    <Compile Include="Migrations\201905151407209_Removed televisionId from Discussion class.Designer.cs">
-      <DependentUpon>201905151407209_Removed televisionId from Discussion class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905151518135_Modified properties in Discussion class.cs" />
-    <Compile Include="Migrations\201905151518135_Modified properties in Discussion class.Designer.cs">
-      <DependentUpon>201905151518135_Modified properties in Discussion class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905161554240_Changed Discussion property Title to DiscussionTitle.cs" />
-    <Compile Include="Migrations\201905161554240_Changed Discussion property Title to DiscussionTitle.Designer.cs">
-      <DependentUpon>201905161554240_Changed Discussion property Title to DiscussionTitle.cs</DependentUpon>
+    <Compile Include="Migrations\201905212035571_Uncommented TelevisionId in Discussion class and everything needed.cs" />
+    <Compile Include="Migrations\201905212035571_Uncommented TelevisionId in Discussion class and everything needed.Designer.cs">
+      <DependentUpon>201905212035571_Uncommented TelevisionId in Discussion class and everything needed.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,32 +83,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905101557242_InitialCreate.resx">
-      <DependentUpon>201905101557242_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905171521563_InitialCreate.resx">
+      <DependentUpon>201905171521563_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101638519_Removed quote property from Film class.resx">
-      <DependentUpon>201905101638519_Removed quote property from Film class.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905211446264_Updated properties for Post class.resx">
+      <DependentUpon>201905211446264_Updated properties for Post class.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905140026571_Removed limitations on number of characters on film synopses.resx">
-      <DependentUpon>201905140026571_Removed limitations on number of characters on film synopses.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905211452037_Removed FilmId from Post class.resx">
+      <DependentUpon>201905211452037_Removed FilmId from Post class.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905141338184_Added value of none to genre and league enums.resx">
-      <DependentUpon>201905141338184_Added value of none to genre and league enums.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905141831103_Modified properties for Discussion class.resx">
-      <DependentUpon>201905141831103_Modified properties for Discussion class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151349259_removed televisionId property from discussion class.resx">
-      <DependentUpon>201905151349259_removed televisionId property from discussion class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151407209_Removed televisionId from Discussion class.resx">
-      <DependentUpon>201905151407209_Removed televisionId from Discussion class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905151518135_Modified properties in Discussion class.resx">
-      <DependentUpon>201905151518135_Modified properties in Discussion class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905161554240_Changed Discussion property Title to DiscussionTitle.resx">
-      <DependentUpon>201905161554240_Changed Discussion property Title to DiscussionTitle.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905212035571_Uncommented TelevisionId in Discussion class and everything needed.resx">
+      <DependentUpon>201905212035571_Uncommented TelevisionId in Discussion class and everything needed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

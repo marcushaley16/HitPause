@@ -7,13 +7,13 @@ namespace DiscussionApp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class ChangedDiscussionpropertyTitletoDiscussionTitle : IMigrationMetadata
+    public sealed partial class UpdatedpropertiesforPostclass : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangedDiscussionpropertyTitletoDiscussionTitle));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedpropertiesforPostclass));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905161554240_Changed Discussion property Title to DiscussionTitle"; }
+            get { return "201905211446264_Updated properties for Post class"; }
         }
         
         string IMigrationMetadata.Source

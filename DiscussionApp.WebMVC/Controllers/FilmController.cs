@@ -13,7 +13,7 @@ namespace DiscussionApp.WebMVC.Controllers
     public class FilmController : Controller
     {
         // GET: Film
-        public ActionResult Index()
+        public ActionResult Index(string filmId)
         {
             var service = new FilmService();
             var model = service.GetFilms().OrderBy(x => x.Title);
@@ -55,6 +55,8 @@ namespace DiscussionApp.WebMVC.Controllers
         {
             var service = new FilmService();
             var model = service.GetFilmById(id);
+
+            ViewBag.FilmTitle = service.GetFilmTitle(id);
 
             return View(model);
         }

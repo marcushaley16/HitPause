@@ -18,6 +18,7 @@ namespace DiscussionApp.Models
         public string Creator { get; set; }
         public string Synopsis { get; set; }
         public string Stars { get; set; }
+        [Display(Name = "Genre")]
         public TVGenreType Genre1 { get; set; }
         public TVGenreType Genre2 { get; set; }
         public string Network { get; set; }

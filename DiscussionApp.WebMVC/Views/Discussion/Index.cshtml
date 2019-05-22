@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DiscussionApp.Models.DiscussionListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Discussions";
 }
 
 <h2>Discussions</h2>
@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@if (TempData.ContainsKey("SaveResult"))
+@*@if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
 
@@ -19,24 +19,25 @@
         </button>
         @TempData["SaveResult"]
     </div>
-}
+}*@
 
 <table class="table">
     <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.DiscussionId)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.MediaType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DiscussionTitle)
         </th>
+        <th>Media</th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedUtc)
+            @Html.DisplayNameFor(model => model.PostCount)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifiedUtc)
+            Created
+        </th>
+        <th>
+            Last Post
         </th>
         <th></th>
     </tr>
@@ -44,21 +45,28 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.DiscussionId)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.MediaType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DiscussionTitle)
+                @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedUtc)
+                @Html.ActionLink(item.FilmTitle, "Details", "Film", new { filmId = item.FilmId.ToString() }, null)
+                @*@Html.ActionLink(item.FilmTitle, "Details", "Film", new { filmid = item.FilmId })*@
+                @*@Html.ActionLink(item.FilmTitle, "Details", new { filmId = item.FilmId.ToString() }, null)*@
+                @*@Html.ActionLink(item.FilmTitle, "Details", new { filmId = ViewBag.Film.Id })*@
+                @*@Html.DisplayFor("Details", "Film", new { filmId = item.FilmId.ToString() }, null)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModifiedUtc)
+                @Html.DisplayFor(modelItem => item.PostCount)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUTC.DateTime) by @Html.DisplayFor(modelItem => item.CreatorUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastPostUTC) by @Html.DisplayFor(modelItem => item.LastPostCreatorUsername)
+            </td>            
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.DiscussionId }) |
                 @Html.ActionLink("Details", "Details", new { id = item.DiscussionId }) |
@@ -66,5 +74,4 @@
             </td>
         </tr>
     }
-
 </table>
