@@ -40,6 +40,7 @@ namespace DiscussionApp.Services
                 var query =
                     ctx
                         .Sports
+                        .Where(d => d.SportId != 1)
                         .Select(
                             e =>
                                 new SportListItem

@@ -46,6 +46,7 @@ namespace DiscussionApp.Services
                 var query =
                     ctx
                         .Films
+                        .Where(d => d.FilmId != 1)
                         .Select(
                             e =>
                                 new FilmListItem

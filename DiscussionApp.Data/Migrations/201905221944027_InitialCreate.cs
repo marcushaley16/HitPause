@@ -14,6 +14,7 @@ namespace DiscussionApp.Data.Migrations
                         DiscussionId = c.Guid(nullable: false),
                         CreatorId = c.Guid(nullable: false),
                         FilmId = c.Int(nullable: false),
+                        TelevisionId = c.Int(nullable: false),
                         MediaType = c.Int(nullable: false),
                         DiscussionTitle = c.String(nullable: false, maxLength: 50),
                         CreatedUTC = c.DateTimeOffset(nullable: false, precision: 7),

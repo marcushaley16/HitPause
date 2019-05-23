@@ -57,21 +57,13 @@
     <Compile Include="Discussion.cs" />
     <Compile Include="Film.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201905171521563_InitialCreate.cs" />
-    <Compile Include="Migrations\201905171521563_InitialCreate.Designer.cs">
-      <DependentUpon>201905171521563_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201905221944027_InitialCreate.cs" />
+    <Compile Include="Migrations\201905221944027_InitialCreate.Designer.cs">
+      <DependentUpon>201905221944027_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905211446264_Updated properties for Post class.cs" />
-    <Compile Include="Migrations\201905211446264_Updated properties for Post class.Designer.cs">
-      <DependentUpon>201905211446264_Updated properties for Post class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211452037_Removed FilmId from Post class.cs" />
-    <Compile Include="Migrations\201905211452037_Removed FilmId from Post class.Designer.cs">
-      <DependentUpon>201905211452037_Removed FilmId from Post class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905212035571_Uncommented TelevisionId in Discussion class and everything needed.cs" />
-    <Compile Include="Migrations\201905212035571_Uncommented TelevisionId in Discussion class and everything needed.Designer.cs">
-      <DependentUpon>201905212035571_Uncommented TelevisionId in Discussion class and everything needed.cs</DependentUpon>
+    <Compile Include="Migrations\201905230101403_Added virtual TVShow and Sport to Discussion class.cs" />
+    <Compile Include="Migrations\201905230101403_Added virtual TVShow and Sport to Discussion class.Designer.cs">
+      <DependentUpon>201905230101403_Added virtual TVShow and Sport to Discussion class.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,17 +75,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905171521563_InitialCreate.resx">
-      <DependentUpon>201905171521563_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905221944027_InitialCreate.resx">
+      <DependentUpon>201905221944027_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211446264_Updated properties for Post class.resx">
-      <DependentUpon>201905211446264_Updated properties for Post class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211452037_Removed FilmId from Post class.resx">
-      <DependentUpon>201905211452037_Removed FilmId from Post class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905212035571_Uncommented TelevisionId in Discussion class and everything needed.resx">
-      <DependentUpon>201905212035571_Uncommented TelevisionId in Discussion class and everything needed.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905230101403_Added virtual TVShow and Sport to Discussion class.resx">
+      <DependentUpon>201905230101403_Added virtual TVShow and Sport to Discussion class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

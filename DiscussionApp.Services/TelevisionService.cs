@@ -49,6 +49,7 @@ namespace DiscussionApp.Services
                 var query =
                     ctx
                         .TVShows
+                        .Where(d => d.TelevisionId != 1)
                         .Select(
                             e =>
                                 new TVShowListItem

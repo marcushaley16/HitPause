@@ -1,4 +1,5 @@
-﻿using DiscussionApp.Data;
+﻿using DiscussionApp.Contracts;
+using DiscussionApp.Data;
 using DiscussionApp.Models;
 using DiscussionApp.Services;
 using DiscussionApp.WebMVC.Data;
@@ -16,62 +17,97 @@ namespace DiscussionApp.WebMVC.Controllers
     {
         FilmService filmService = new FilmService();
         TelevisionService tvService = new TelevisionService();
-        //SportService sportService = new SportService();
+        SportService sportService = new SportService();
 
         // GET: Discussion
         [Route("")]
         public ActionResult Index()
         {
-            var service = CreateDiscussionService();
+            var service = NewDiscussionService();
             var model = service.GetDiscussions();
 
             ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
 
-            //ViewBag.FilmId = 
+            return View(model);
+        }
+
+        // GET: FilmDiscussions
+        [Route("")]
+        public ActionResult IndexFilm()
+        {
+            var service = NewDiscussionService();
+            var model = service.GetDiscussionsByType(MediaType.Film);
+
+            ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
+
+            return View(model);
+        }
+
+        // GET: FilmDiscussions
+        [Route("")]
+        public ActionResult IndexTelevision()
+        {
+            var service = NewDiscussionService();
+            var model = service.GetDiscussionsByType(MediaType.Television);
+
+            ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
+
+            return View(model);
+        }
+
+        // GET: SportDiscussions
+        [Route("")]
+        public ActionResult IndexSport()
+        {
+            var service = NewDiscussionService();
+            var model = service.GetDiscussionsByType(MediaType.Sports);
+
+            ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
 
             return View(model);
         }
 
         // GET: Discussion/Create
-        public ActionResult Create()
+        public ActionResult CreateFilmDiscussion()
         {
-            //ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
-            ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title");
-            //ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "");
+            ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
 
             return View();
         }
 
-        // POST: Discussion/Create
+        public ActionResult CreateTelevisionDiscussion()
+        {
+            ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title");
+
+            return View();
+        }
+
+        public ActionResult CreateSportDiscussion()
+        {
+            ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "League");
+
+            return View();
+        }
+
+        // POST: FilmDiscussion/Create
         [HttpPost]
-        [ActionName("Create")]
+        [ActionName("CreateFilmDiscussion")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DiscussionCreate model)
+        public ActionResult CreateFilmDiscussion(FilmDiscussionCreate model)
         {
             model.DiscussionId = Guid.NewGuid();
 
-            var service = CreateDiscussionService();
+            model.MediaType = MediaType.Film;
+
+            var service = NewDiscussionService();
 
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            if (model.FilmId != 0)
-            {
-                model.TelevisionId = 0;
-                model.SportId = 0;
-            }
-            else if (model.TelevisionId != 0)
-            {
-                model.FilmId = 0;
-                model.SportId = 0;
-            }
-            else if (model.SportId != 0)
-            {
-                model.FilmId = 0;
-                model.TelevisionId = 0;
-            }
+            model.SportId = 1;
+            model.TelevisionId = 1;
 
             if (service.CreateDiscussion(model))
             {
@@ -80,22 +116,76 @@ namespace DiscussionApp.WebMVC.Controllers
             };
 
             ModelState.AddModelError("", "The discussion could not be created.");
-            //ViewBag.FilmId = new SelectList(filmService.GetFilms(), "FilmId", "Title");
 
             return View(model);
         }
 
-        //[HttpPost]
-        //public JsonResult Film(MediaType mediaType)
-        //{
-        //    var filmList = .GetFilmsByType(mediaType);
-        //    return Json(filmList, JsonRequestBehavior.AllowGet);
-        //}
+        // POST: TelevisionDiscussion/Create
+        [HttpPost]
+        [ActionName("CreateTelevisionDiscussion")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateTelevisionDiscussion(TelevisionDiscussionCreate model)
+        {
+            model.DiscussionId = Guid.NewGuid();
+
+            model.MediaType = MediaType.Television;
+
+            var service = NewDiscussionService();
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            model.FilmId = 1;
+            model.SportId = 1;
+
+            if (service.CreateDiscussion(model))
+            {
+                TempData["ResultSaved"] = "The discussion was created.";
+                return RedirectToAction("Index", "Post", new { discussionId = model.DiscussionId });
+            };
+
+            ModelState.AddModelError("", "The discussion could not be created.");
+
+            return View(model);
+        }
+
+        // POST: SportDiscussion/Create
+        [HttpPost]
+        [ActionName("CreateSportDiscussion")]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateSportDiscussion(SportDiscussionCreate model)
+        {
+            model.DiscussionId = Guid.NewGuid();
+
+            model.MediaType = MediaType.Sports;
+
+            var service = NewDiscussionService();
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            model.FilmId = 1;
+            model.TelevisionId = 1;
+
+            if (service.CreateDiscussion(model))
+            {
+                TempData["ResultSaved"] = "The discussion was created.";
+                return RedirectToAction("Index", "Post", new { discussionId = model.DiscussionId });
+            };
+
+            ModelState.AddModelError("", "The discussion could not be created.");
+
+            return View(model);
+        }
 
         // GET: Discussion/Detail/{id}
         public ActionResult Details(Guid id)
         {
-            var service = CreateDiscussionService();
+            var service = NewDiscussionService();
             var model = service.GetDiscussionById(id);
 
             ViewBag.Discussion = service.GetDiscussionTitle(id);
@@ -104,24 +194,20 @@ namespace DiscussionApp.WebMVC.Controllers
         }
 
         // GET: Discussion/Edit/{id}
-        public ActionResult Edit(Guid id)
+        public ActionResult EditFilmDiscussion(Guid id)
         {
-            var service = CreateDiscussionService();
-            //DiscussionService service = new DiscussionService();
-            //FilmService filmService = new FilmService();
+            var service = NewDiscussionService();
 
             var detail = service.GetDiscussionById(id);
-            //var filmDetail = filmService.GetFilmById(filmId);
 
             var model = new DiscussionEdit
             {
                 DiscussionId = detail.DiscussionId,
                 FilmId = detail.FilmId,
+                TelevisionId = detail.TelevisionId,
+                SportId = detail.SportId,
                 MediaType = detail.MediaType,
                 DiscussionTitle = detail.DiscussionTitle,
-                //Film = detail.Film,
-                //TVShow = detail.TVShow,
-                //Sport = detail.Sport
             };
 
             ViewBag.Discussion = service.GetDiscussionTitle(id);
@@ -129,10 +215,54 @@ namespace DiscussionApp.WebMVC.Controllers
             return View(model);
         }
 
-        // POST: Discussion/Edit/{id}
+        // GET: Discussion/Edit/{id}
+        public ActionResult EditTelevisionDiscussion(Guid id)
+        {
+            var service = NewDiscussionService();
+
+            var detail = service.GetDiscussionById(id);
+
+            var model = new DiscussionEdit
+            {
+                DiscussionId = detail.DiscussionId,
+                FilmId = detail.FilmId,
+                TelevisionId = detail.TelevisionId,
+                SportId = detail.SportId,
+                MediaType = detail.MediaType,
+                DiscussionTitle = detail.DiscussionTitle,
+            };
+
+            ViewBag.Discussion = service.GetDiscussionTitle(id);
+            ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title");
+            return View(model);
+        }
+
+        // GET: Discussion/Edit/{id}
+        public ActionResult EditSportDiscussion(Guid id)
+        {
+            var service = NewDiscussionService();
+
+            var detail = service.GetDiscussionById(id);
+
+            var model = new DiscussionEdit
+            {
+                DiscussionId = detail.DiscussionId,
+                FilmId = detail.FilmId,
+                TelevisionId = detail.TelevisionId,
+                SportId = detail.SportId,
+                MediaType = detail.MediaType,
+                DiscussionTitle = detail.DiscussionTitle,
+            };
+
+            ViewBag.Discussion = service.GetDiscussionTitle(id);
+            ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "League");
+            return View(model);
+        }
+
+        // PUT: FilmDiscussion/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Guid id, DiscussionEdit model)
+        public ActionResult EditFilmDiscussion(Guid id, DiscussionEdit model)
         {
             if (!ModelState.IsValid)
             {
@@ -145,9 +275,9 @@ namespace DiscussionApp.WebMVC.Controllers
                 return View(model);
             }
 
-            var service = CreateDiscussionService();
+            var service = NewDiscussionService();
 
-            if (service.UpdateDiscussion(model))
+            if (service.UpdateFilmDiscussion(model))
             {
                 TempData["ResultSaved"] = "The discussion was updated.";
                 return RedirectToAction("Index");
@@ -157,10 +287,66 @@ namespace DiscussionApp.WebMVC.Controllers
             return View(model);
         }
 
-        // GET: Discussion/Delete/{id}
+        // PUT: TelevisionDiscussion/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditTelevisionDiscussion(Guid id, DiscussionEdit model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (model.DiscussionId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = NewDiscussionService();
+
+            if (service.UpdateTelevisionDiscussion(model))
+            {
+                TempData["ResultSaved"] = "The discussion was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "The discussion could not be updated.");
+            return View(model);
+        }
+
+        // PUT: SportDiscussion/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSportDiscussion(Guid id, DiscussionEdit model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (model.DiscussionId != id)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            var service = NewDiscussionService();
+
+            if (service.UpdateSportDiscussion(model))
+            {
+                TempData["ResultSaved"] = "The discussion was updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "The discussion could not be updated.");
+            return View(model);
+        }
+
+        // DELETE: Discussion/Delete/{id}
         public ActionResult Delete(Guid id)
         {
-            var service = CreateDiscussionService();
+            var service = NewDiscussionService();
             var model = service.GetDiscussionById(id);
 
             ViewBag.Discussion = service.GetDiscussionTitle(id);
@@ -174,7 +360,7 @@ namespace DiscussionApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteDiscussion(Guid id)
         {
-            var service = CreateDiscussionService();
+            var service = NewDiscussionService();
 
             service.DeleteDiscussion(id);
 
@@ -184,7 +370,7 @@ namespace DiscussionApp.WebMVC.Controllers
         }
 
         // ------------- Helper Method ------------------------
-        private DiscussionService CreateDiscussionService()
+        private DiscussionService NewDiscussionService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new DiscussionService(userId);

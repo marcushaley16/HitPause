@@ -7,7 +7,16 @@
 <h2>Discussions</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    Create New Discussion: 
+    @Html.ActionLink("Film", "CreateFilmDiscussion", "Discussion") |
+    @Html.ActionLink("Television", "CreateTelevisionDiscussion", "Discussion") |
+    @Html.ActionLink("Sports", "CreateSportDiscussion", "Discussion")
+</p>
+<p>
+    Filter Discussions By Type:
+    @Html.ActionLink("Film", "IndexFilm", "Discussion") |
+    @Html.ActionLink("Television", "IndexTelevision", "Discussion") |
+    @Html.ActionLink("Sports", "IndexSport", "Discussion")
 </p>
 
 @*@if (TempData.ContainsKey("SaveResult"))
@@ -52,23 +61,42 @@
                 @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
             </td>
             <td>
-                @Html.ActionLink(item.FilmTitle, "Details", "Film", new { filmId = item.FilmId.ToString() }, null)
-                @*@Html.ActionLink(item.FilmTitle, "Details", "Film", new { filmid = item.FilmId })*@
-                @*@Html.ActionLink(item.FilmTitle, "Details", new { filmId = item.FilmId.ToString() }, null)*@
-                @*@Html.ActionLink(item.FilmTitle, "Details", new { filmId = ViewBag.Film.Id })*@
-                @*@Html.DisplayFor("Details", "Film", new { filmId = item.FilmId.ToString() }, null)*@
+                @if (item.MediaType == DiscussionApp.Data.MediaType.Film)
+                {
+                    @Html.ActionLink(item.FilmTitle, "Details", "Film", new { id = item.FilmId }, null)
+                }
+                @if (item.MediaType == DiscussionApp.Data.MediaType.Television)
+                {
+                    @Html.ActionLink(item.TelevisionTitle, "Details", "Television", new { id = item.TelevisionId }, null)
+                }
+                @if (item.MediaType == DiscussionApp.Data.MediaType.Sports)
+                {
+                    @Html.ActionLink("Details", "Details", "Sport", new { id = item.SportId }, null)
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PostCount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedUTC.DateTime) by @Html.DisplayFor(modelItem => item.CreatorUsername)
+                @Html.DisplayFor(modelItem => item.CreatedUTC) by @Html.DisplayFor(modelItem => item.CreatorUsername)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LastPostUTC) by @Html.DisplayFor(modelItem => item.LastPostCreatorUsername)
             </td>            
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.DiscussionId }) |
+                @if (item.MediaType == DiscussionApp.Data.MediaType.Film)
+                {
+                    @Html.ActionLink("Edit", "EditFilmDiscussion", new { id = item.DiscussionId }, null)
+                }
+                @if (item.MediaType == DiscussionApp.Data.MediaType.Television)
+                {
+                    @Html.ActionLink("Edit", "EditTelevisionDiscussion", new { id = item.DiscussionId }, null)
+                }
+                @if (item.MediaType == DiscussionApp.Data.MediaType.Sports)
+                {
+                    @Html.ActionLink("Edit", "EditTelevisionDiscussion", new { id = item.DiscussionId }, null)
+                } |
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.DiscussionId }) |*@
                 @Html.ActionLink("Details", "Details", new { id = item.DiscussionId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.DiscussionId })
             </td>

@@ -7,13 +7,13 @@ namespace DiscussionApp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class UpdatedpropertiesforPostclass : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedpropertiesforPostclass));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905211446264_Updated properties for Post class"; }
+            get { return "201905221944027_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

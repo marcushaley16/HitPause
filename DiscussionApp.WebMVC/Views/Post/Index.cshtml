@@ -8,7 +8,7 @@
 <h2>Discussion: @ViewBag.DiscussionTitle</h2>
 
 <p>
-    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @Html.ActionLink("View Media Details", "Details", new { ViewBag.FilmId }) | <a href="#new_reply">Go to bottom</a>
+    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @*@Html.ActionLink("View Media Details", "Details", "Film", new { id = ViewBag.FilmId }, null) |*@ <a href="#new_reply">Go to bottom</a>
 </p>
 @{
     int i = 1;
@@ -63,5 +63,5 @@
 </div>
 
 <p>
-    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @*@Html.ActionLink("Media Details", "Details", "Film", new { filmId = item.FilmId.ToString() }, null)*@ |@*@Html.ActionLink("New Reply", "Create") |*@ <a href="#top">Jump to Top</a>
+    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @*@Html.ActionLink("Media Details", "Details", "Film", new { filmId = item.FilmId.ToString() }, null) |*@ @*@Html.ActionLink("New Reply", "Create") |*@ <a href="#top">Jump to Top</a>
 </p>

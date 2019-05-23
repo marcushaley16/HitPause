@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DiscussionApp.Models.DiscussionListItem>
+
+@{
+    ViewBag.Title = "Television Discussions";
+}
+
+<h2>Television Discussions</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateTelevisionDiscussion", "Discussion") |
+    @Html.ActionLink("Discussion Board", "Index", "Discussion")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscussionTitle)
+        </th>
+        <th>
+            Show
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostCount)
+        </th>
+        <th>
+            Created
+        </th>
+        <th>
+            Last Post
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
+            </td>
+            <td>
+                @Html.ActionLink(item.TelevisionTitle, "Details", "Television", new { id = item.TelevisionId }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUTC) by @Html.DisplayFor(modelItem => item.CreatorUsername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastPostUTC) by @Html.DisplayFor(modelItem => item.LastPostCreatorUsername)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DiscussionId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DiscussionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DiscussionId })
+            </td>
+        </tr>
+    }
+
+</table>

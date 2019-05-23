@@ -13,7 +13,7 @@ namespace DiscussionApp.WebMVC.Controllers
     public class FilmController : Controller
     {
         // GET: Film
-        public ActionResult Index(string filmId)
+        public ActionResult Index()
         {
             var service = new FilmService();
             var model = service.GetFilms().OrderBy(x => x.Title);

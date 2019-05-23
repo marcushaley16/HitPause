@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DiscussionApp.Contracts\DiscussionApp.Contracts.csproj">
+      <Project>{2A5210BB-3639-40DA-B17C-1E898288A4E0}</Project>
+      <Name>DiscussionApp.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DiscussionApp.Data\DiscussionApp.Data.csproj">
       <Project>{52ef7ba3-ad8f-4b4f-a73a-3bfb64a1e974}</Project>
       <Name>DiscussionApp.Data</Name>

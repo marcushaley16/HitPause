@@ -21,5 +21,6 @@ namespace DiscussionApp.Models
         public DateTime Time { get; set; }
         public string Network { get; set; }
         public string Score { get; set; }
+        public string MatchUp { get => $"{HomeTeam} vs. {AwayTeam}"; }
     }
 }

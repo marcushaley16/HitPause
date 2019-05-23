@@ -240,7 +240,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Discussion\Index.cshtml" />
-    <Content Include="Views\Discussion\Create.cshtml" />
     <Content Include="Views\Film\Index.cshtml" />
     <Content Include="Views\Film\Create.cshtml" />
     <Content Include="Views\Film\Details.cshtml" />
@@ -257,12 +256,20 @@
     <Content Include="Views\Sport\Edit.cshtml" />
     <Content Include="Views\Sport\Delete.cshtml" />
     <Content Include="Views\Discussion\Details.cshtml" />
-    <Content Include="Views\Discussion\Edit.cshtml" />
+    <Content Include="Views\Discussion\EditFilmDiscussion.cshtml" />
     <Content Include="Views\Discussion\Delete.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\Delete.cshtml" />
+    <Content Include="Views\Discussion\CreateTelevisionDiscussion.cshtml" />
+    <Content Include="Views\Discussion\CreateSportDiscussion.cshtml" />
+    <Content Include="Views\Discussion\IndexFilm.cshtml" />
+    <Content Include="Views\Discussion\IndexTelevision.cshtml" />
+    <Content Include="Views\Discussion\IndexSport.cshtml" />
+    <Content Include="Views\Discussion\CreateFilmDiscussion.cshtml" />
+    <Content Include="Views\Discussion\EditTelevisionDiscussion.cshtml" />
+    <Content Include="Views\Discussion\EditSportDiscussion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -281,6 +288,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DiscussionApp.Contracts\DiscussionApp.Contracts.csproj">
+      <Project>{2A5210BB-3639-40DA-B17C-1E898288A4E0}</Project>
+      <Name>DiscussionApp.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DiscussionApp.Data\DiscussionApp.Data.csproj">
       <Project>{52EF7BA3-AD8F-4B4F-A73A-3BFB64A1E974}</Project>
       <Name>DiscussionApp.Data</Name>
