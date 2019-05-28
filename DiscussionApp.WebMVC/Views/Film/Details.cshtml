@@ -4,111 +4,72 @@
     ViewBag.Title = ViewBag.FilmTitle;
 }
 
-<h2>@ViewBag.FilmTitle</h2>
+<h2 id="details-h2">Details</h2>
 
-<div>
-    <h4>Details</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Genre1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Genre1) /
-            @Html.DisplayFor(model => model.Genre2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Runtime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Runtime) mins
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Director)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Director)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Writer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Writer)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Stars)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Stars)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cinematographer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cinematographer)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Editor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Editor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Synopsis)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Synopsis)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Released)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Released)
-        </dd>*@
-    </dl>
+<div class="details-controls" style="clear: both;">
+    <p class="details-nav">
+        @Html.ActionLink("Back to Film", "Index")
+    </p>
+    <p class="details-edit">
+        @Html.ActionLink("Edit Film", "Edit", new { id = Model.FilmId })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FilmId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<br />
+<div>
+    <hr />
+    <div class="table-tv-details">
+        <div class="div-tv-details">
+            <h2>@Html.DisplayFor(model => model.Title)</h2>
+            <p>
+                @Html.DisplayFor(model => model.Year) |
+                @Html.DisplayFor(model => model.Rating) |
+                @Html.DisplayFor(model => model.Runtime) mins |
+                @Html.DisplayFor(model => model.Genre1) /
+                @Html.DisplayFor(model => model.Genre2)
+            </p>
+            <br />
+            <p>
+                <b>Director</b>
+            </p>
+            <p>
+                @Html.DisplayFor(model => model.Director)
+            </p>
+            <br />
+            <p>
+                <b>Writing</b>
+            </p>
+            <p>
+                @Html.DisplayFor(model => model.Writer)
+            </p>
+            <br />
+            <p>
+                <b>Cinematography</b>
+            </p>
+            <p>
+                @Html.DisplayFor(model => model.Cinematographer)
+            </p>
+            <br />
+            <p>
+                <b>Editing</b>
+            </p>
+            <p>
+                @Html.DisplayFor(model => model.Editor)
+            </p>
+            <br />
+            <p>
+                <b>Stars</b>
+            </p>
+            <p>
+                @Html.DisplayFor(model => model.Stars)
+            </p>
+            <br />
+            <p><b>Synopsis</b></p>
+            <p>
+                @Html.DisplayFor(model => model.Synopsis)
+            </p>
+            <br />
+        </div>
+    </div>
+</div>
+
+

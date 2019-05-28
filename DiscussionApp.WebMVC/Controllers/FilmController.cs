@@ -1,4 +1,5 @@
-﻿using DiscussionApp.Models;
+﻿using DiscussionApp.Data;
+using DiscussionApp.Models;
 using DiscussionApp.Services;
 using DiscussionApp.WebMVC.Data;
 using System;
@@ -32,6 +33,8 @@ namespace DiscussionApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FilmCreate model)
         {
+            model.MediaType = MediaType.Film;
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -67,6 +70,7 @@ namespace DiscussionApp.WebMVC.Controllers
             var service = new FilmService();
 
             var detail = service.GetFilmById(id);
+
             var model = new FilmEdit
             {
                 FilmId = detail.FilmId,
@@ -85,6 +89,8 @@ namespace DiscussionApp.WebMVC.Controllers
                 Runtime = detail.Runtime,
                 Rating = detail.Rating,
             };
+
+            ViewBag.Title = service.GetFilmTitle(id);
             return View(model);
         }
 

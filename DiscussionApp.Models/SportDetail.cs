@@ -19,6 +19,7 @@ namespace DiscussionApp.Models
         public string HomeTeam { get; set; }
         [Display(Name = "Away")]
         public string AwayTeam { get; set; }
+        public string Matchup { get => $"{AwayTeam} @ {HomeTeam}"; }
         public string Location { get; set; }
         public DateTime Time { get; set; }
         public string Network { get; set; }

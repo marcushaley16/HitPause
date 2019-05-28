@@ -64,19 +64,6 @@ namespace DiscussionApp.Services
             }
         }
 
-        //public IQueryable<Film> GetFilmsByType(MediaType mediaType)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var filmList = ctx.Films.Where(x => x.MediaType == MediaType.Film).ToList().Select(item => new Film
-        //        {
-        //            MediaType = item.MediaType,
-        //            Title = item.Title
-        //        }).AsQueryable();
-        //        return filmList;
-        //    }
-        //}
-
         public FilmDetail GetFilmById(int filmId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -150,7 +137,7 @@ namespace DiscussionApp.Services
             }
         }
 
-        // Helper Methods
+        // Helper Method
         public string GetFilmTitle(int filmId)
         {
             using (var ctx = new ApplicationDbContext())

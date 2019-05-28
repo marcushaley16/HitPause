@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiscussionApp.Services;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,21 @@ namespace DiscussionApp.WebMVC.Controllers
 {
     public class HomeController : Controller
     {
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        // GET: HomeTrending
+        [Route("")]
         public ActionResult Index()
         {
-            return View();
+            var service = NewDiscussionService();
+            var model = service.GetTrendingDiscussions();
+
+            ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
+
+            return View(model);
         }
 
         public ActionResult About()
@@ -25,6 +39,14 @@ namespace DiscussionApp.WebMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        // ------------- Helper Method ------------------------
+        private DiscussionService NewDiscussionService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new DiscussionService(userId);
+            return service;
         }
     }
 }

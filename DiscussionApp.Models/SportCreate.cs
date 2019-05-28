@@ -10,7 +10,7 @@ namespace DiscussionApp.Models
 {
     public class SportCreate
     {
-        [Required]
+        //[Required]
         public MediaType MediaType { get; set; }
         [Required]
         public League League { get; set; }

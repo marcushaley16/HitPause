@@ -4,14 +4,23 @@
     ViewBag.Title = "Film Discussions";
 }
 
-<h2>Film Discussions</h2>
+<h2 id="discussion-index-film-h2">Film Discussions</h2>
 
-<p>
-    @Html.ActionLink("Create New", "CreateFilmDiscussion", "Discussion") |
-    @Html.ActionLink("Discussion Board", "Index", "Discussion")
-</p>
+<div id="discussion-index-controls" style="clear: both;">
+    <p id="discussion-index-create">
+        @Html.ActionLink("Create New", "CreateFilmDiscussion", "Discussion") |
+        @Html.ActionLink("Discussion Board", "Index", "Discussion")
+    </p>
+    <p id="discussion-index-filter">
+        <b>Filter Discussions By Type:</b>
+        @Html.ActionLink("Film", "IndexFilm", "Discussion") |
+        @Html.ActionLink("Television", "IndexTelevision", "Discussion") |
+        @Html.ActionLink("Sports", "IndexSport", "Discussion")
+    </p>
+</div>
+
 <table class="table">
-    <tr>
+    <tr class="discussion-table-headings">
         <th>
             @Html.DisplayNameFor(model => model.DiscussionTitle)
         </th>
@@ -32,7 +41,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="discussion-table-row-film">
             <td>
                 @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
             </td>
@@ -50,7 +59,6 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.DiscussionId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.DiscussionId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.DiscussionId })
             </td>
         </tr>

@@ -1,4 +1,5 @@
-﻿using DiscussionApp.Models;
+﻿using DiscussionApp.Data;
+using DiscussionApp.Models;
 using DiscussionApp.Services;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace DiscussionApp.WebMVC.Controllers
         public ActionResult Index()
         {
             var service = new SportService();
-            var model = service.GetSports();
+            var model = service.GetSports().OrderBy(x => x.League).ThenBy(x => x.Time);
 
             return View(model);
         }
@@ -31,6 +32,8 @@ namespace DiscussionApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SportCreate model)
         {
+            model.MediaType = MediaType.Sports;
+
             if (!ModelState.IsValid)
             {
                 return View(model);

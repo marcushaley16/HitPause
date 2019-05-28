@@ -119,5 +119,12 @@ namespace DiscussionApp.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        // Helper Method
+        public string GetSportMatchup(int sportId)
+        {
+            using (var ctx = new ApplicationDbContext())
+                return ctx.Sports.Where(d => d.SportId == sportId).Single().Matchup;
+        }
     }
 }

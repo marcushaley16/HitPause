@@ -1,24 +1,217 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: rgba(20, 20, 20, 0.80);
+    color: ghostwhite;
+    font-family: 'Titillium Web', sans-serif;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#carousel-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+#carousel img {
+    left: 0;
+    bottom: 0;
+    min-width: 50%;
+    min-height: 50%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+#carousel iframe {
+    left: 0;
+    bottom: 0;
+    min-width: 50%;
+    min-height: 50%;
+    max-width: 100%;
+    width: 100%;
+}
+
+.carousel-caption {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: white;
+    background-color: black;
+    opacity: 0.6;
+}
+
+#film-index-h2,
+#tv-index-h2,
+#sport-index-h2,
+#discussion-index-h2,
+.home-h2,
+#home-index-h2,
+#discussion-index-film-h2,
+#discussion-index-tv-h2,
+#discussion-index-sport-h2 {
+    text-align: center;
+}
+
+.home-nav {
+    height: 80px;
+}
+
+.home-button-film {
+    text-align: center;
+    background-color: rebeccapurple;
+}
+
+.home-button-tv {
+    text-align: center;
+    background-color: dodgerblue;
+}
+
+.home-button-sports {
+    text-align: center;
+    background-color: seagreen;
+}
+
+#details-h2,
+#details-h4 {
+    text-align: center;
+}
+
+#film-index-create, #tv-index-create, #sport-index-create {
+    text-align: center;
+}
+
+.table .discussion-table-headings th {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table .film-table-row th {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table .film-table-row td,
+.table .discussion-table-row-film td {
+    background-color: rebeccapurple;
+    color: ghostwhite;
+    padding: 20px;
+    vertical-align: middle;
+    height: 75px;
+}
+
+.table .tv-table-row th {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table .tv-table-row td,
+.table .discussion-table-row-tv td {
+    background-color: dodgerblue;
+    color: ghostwhite;
+    padding: 10px 20px 10px 20px;
+    vertical-align: middle;
+    height: 75px;
+}
+
+.table .sport-table-row th {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.table .sport-table-row td,
+.table .discussion-table-row-sport td {
+    background-color: seagreen;
+    color: ghostwhite;
+    padding: 10px 20px 10px 20px;
+    vertical-align: middle;
+    height: 75px;
+}
+
+.table .film-table-row a:link, a:visited,
+.table .tv-table-row a:link, a:visited,
+.table .sport-table-row a:link, a:visited,
+.table .discussion-table-row-film a:link, a:visited,
+.table .discussion-table-row-tv a:link, a:visited,
+.table .discussion-table-row-sport a:link, a:visited,
+.discussion-nav a:link, a:visited {
+    color: ghostwhite;
+}
+
+.table .film-table-row a:hover,
+.table .tv-table-row a:hover,
+.table .sport-table-row a:hover,
+.table .discussion-table-row-film a:hover,
+.table .discussion-table-row-tv a:hover,
+.table .discussion-table-row-sport a:hover,
+.discussion-nav a:hover {
+    color: gray;
+}
+
+#discussion-index-controls {
+}
+
+#discussion-index-create {
+    float: left;
+}
+
+#discussion-index-filter {
+    float: right;
+}
+
+.table-film-details,
+.table-tv-details,
+.table-sport-details {
+    text-align: center;
+}
+
+.details-controls {
+    text-align: center;
+}
+
+.details-nav {
+    float: left;
+}
+
+.details-edit {
+    float: right;
+}
+
+#media-title {
+    text-align: center;
+}
+
+.post {
+    width: auto;
+}
+
+#new_reply textarea {
+    color: white;
+    background-color: black;
+}
+
+#new_reply input {
+    color: black;
+    width: 100%;
+}
+
+.discussion-nav {
+    color: ghostwhite;
+}
+
+footer {
+    text-align: center;
 }

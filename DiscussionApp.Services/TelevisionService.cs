@@ -28,11 +28,6 @@ namespace DiscussionApp.Services
                         Released = model.Released,
                         Rating = model.Rating,
                         Runtime = model.Runtime
-                        //DateAired = model.DateAired,
-                        //Director = model.Director,
-                        //Writer = model.Writer,
-                        //Cinematographer = model.Cinematographer,
-                        //Editor = model.Editor
                     };
 
             using (var ctx = new ApplicationDbContext())
@@ -93,11 +88,6 @@ namespace DiscussionApp.Services
                         Released = entity.Released,
                         Runtime = entity.Runtime,
                         Rating = entity.Rating
-                        //Director = entity.Director,
-                        //Writer = entity.Writer,
-                        //Cinematographer = entity.Cinematographer,
-                        //Editor = entity.Editor
-                        //DateAired = entity.DateAired
                     };
             }
         }
@@ -123,11 +113,6 @@ namespace DiscussionApp.Services
                 entity.Runtime = model.Runtime;
                 entity.Rating = model.Rating;
                 entity.Released = model.Released;
-                //entity.Director = model.Director;
-                //entity.Writer = model.Writer;
-                //entity.Cinematographer = model.Cinematographer;
-                //entity.Editor = model.Editor;
-                //entity.DateAired = model.DateAired;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -148,7 +133,7 @@ namespace DiscussionApp.Services
             }
         }
 
-        // Helper Methods
+        // Helper Method
         public string GetTVTitle(int televisionId)
         {
             using (var ctx = new ApplicationDbContext())

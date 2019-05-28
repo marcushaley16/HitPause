@@ -43,7 +43,7 @@ namespace DiscussionApp.WebMVC.Controllers
             return View(model);
         }
 
-        // GET: FilmDiscussions
+        // GET: TelevisionDiscussions
         [Route("")]
         public ActionResult IndexTelevision()
         {
@@ -85,6 +85,7 @@ namespace DiscussionApp.WebMVC.Controllers
         public ActionResult CreateSportDiscussion()
         {
             ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "League");
+            ViewBag.Matchup = new SelectList(sportService.GetSports(), "SportId", "Matchup");
 
             return View();
         }
@@ -233,7 +234,7 @@ namespace DiscussionApp.WebMVC.Controllers
             };
 
             ViewBag.Discussion = service.GetDiscussionTitle(id);
-            ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title");
+            ViewBag.TelevisionId = new SelectList(tvService.GetTVShows(), "TelevisionId", "Title", detail.TelevisionId);
             return View(model);
         }
 
@@ -255,7 +256,7 @@ namespace DiscussionApp.WebMVC.Controllers
             };
 
             ViewBag.Discussion = service.GetDiscussionTitle(id);
-            ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "League");
+            ViewBag.SportId = new SelectList(sportService.GetSports(), "SportId", "Matchup", detail.SportId);
             return View(model);
         }
 

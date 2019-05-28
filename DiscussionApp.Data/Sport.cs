@@ -40,6 +40,7 @@ namespace DiscussionApp.Data
         public string HomeTeam { get; set; }
         [Required]
         public string AwayTeam { get; set; }
+        public string Matchup { get => $"{AwayTeam} @ {HomeTeam}"; }
         [Required]
         public string Location { get; set; }
         [Required]

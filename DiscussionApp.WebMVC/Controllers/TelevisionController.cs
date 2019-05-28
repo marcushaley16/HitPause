@@ -38,6 +38,8 @@ namespace DiscussionApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TVShowCreate model)
         {
+            model.MediaType = MediaType.Television;
+
             if (!ModelState.IsValid)
             {
                 return View(model);

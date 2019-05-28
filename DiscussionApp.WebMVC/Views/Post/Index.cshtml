@@ -7,48 +7,52 @@
 
 <h2>Discussion: @ViewBag.DiscussionTitle</h2>
 
-<p>
-    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @*@Html.ActionLink("View Media Details", "Details", "Film", new { id = ViewBag.FilmId }, null) |*@ <a href="#new_reply">Go to bottom</a>
+<p class="discussion-nav">
+    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | <a href="#new_reply">Go to bottom</a>
 </p>
+
+<hr />
+
 @{
     int i = 1;
 }
 @foreach (var item in Model)
 {
-    <div class="container-fluid post">
+    <div class="post">
         <div class="datestamp">
             <span>
-                #@i  posted at @Html.DisplayFor(modelItem => item.CreatedUTC.DateTime)
-                @if (item.ModifiedUTC != null)
-                {
-                    <span> - (Modified @Html.DisplayFor(modelItem => item.ModifiedUTC))</span>
-                }
-            </span>
-            <span class="controls">
-                <span>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.PostId }) |
-                    @*@Html.ActionLink("Details", "Details", new { id = item.PostId }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.PostId })
+                <b>#@i Posted @Html.DisplayFor(modelItem => item.CreatedUTC)</b>
+                <span class="controls">
+                    <span>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.PostId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PostId })
+                    </span>
                 </span>
             </span>
         </div>
-    </div>
-    <div class="row postmain">
-        <div class="col-xs-2 creatorinfo">
-            <span>@Html.DisplayFor(modelItem => item.CreatorUsername)</span>
-        </div>
-        <div class="col-xs-10 body">
-            @{
-                string[] content = item.Body.Split('\n');
-            }
-            <p>
-                @foreach (string line in content)
-                {
-                    @line<br />
+        <div class="row postmain">
+            <div class="col-xs-12 creatorinfo">
+                <span><b>@Html.DisplayFor(modelItem => item.CreatorUsername)</b></span>
+            </div>
+            <div class="col-xs-12 body">
+                @{
+                    string[] content = item.Body.Split('\n');
                 }
-            </p>
+                <p>
+                    @foreach (string line in content)
+                    {
+                        @line<br />
+                    }
+                </p>
+                @if (item.ModifiedUTC != null)
+                {
+                    <br />
+                    <span>(Edited @Html.DisplayFor(modelItem => item.ModifiedUTC))</span>
+                }
+            </div>
         </div>
     </div>
+    <br />
     i++;
 }
 <br />
@@ -56,12 +60,12 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <textarea name="body" placeholder="New Reply" rows="4"></textarea>
+        <textarea name="body" placeholder="New Reply" rows="4" cols="50"></textarea>
         <br />
         <input type="submit" value="Post" />
     }
 </div>
-
-<p>
-    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | @*@Html.ActionLink("Media Details", "Details", "Film", new { filmId = item.FilmId.ToString() }, null) |*@ @*@Html.ActionLink("New Reply", "Create") |*@ <a href="#top">Jump to Top</a>
+<br />
+<p class="discussion-nav">
+    @Html.ActionLink("Back to Discussion Board", "Index", "Discussion") | <a href="#top">Jump to Top</a>
 </p>

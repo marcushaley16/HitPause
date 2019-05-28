@@ -73,7 +73,7 @@ namespace DiscussionApp.Services
                                     SportId = d.SportId,
                                     FilmTitle = d.Film.Title,
                                     TelevisionTitle = d.TVShow.Title,
-                                    //SportTitle = d.Sport.League,
+                                    //Matchup = d.Sport.Matchup,
                                     DiscussionTitle = d.DiscussionTitle,
                                     CreatorId = d.CreatorId,
                                     CreatorUsername = ctx.Users.Where(y => y.Id == d.CreatorId.ToString()).FirstOrDefault().UserName,
@@ -106,7 +106,7 @@ namespace DiscussionApp.Services
                                     SportId = d.SportId,
                                     FilmTitle = d.Film.Title,
                                     TelevisionTitle = d.TVShow.Title,
-                                    // SportTitle
+                                    //Matchup = d.Sport.Matchup,
                                     DiscussionTitle = d.DiscussionTitle,
                                     CreatorId = d.CreatorId,
                                     CreatorUsername = ctx.Users.Where(y => y.Id == d.CreatorId.ToString()).FirstOrDefault().UserName,
@@ -117,6 +117,38 @@ namespace DiscussionApp.Services
                                 }
                             );
                 return query.OrderByDescending(x => x.LastPostUTC).ToArray();
+            }
+        }
+
+        public IEnumerable<DiscussionListItem> GetTrendingDiscussions()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Discussions
+                        .Select(
+                            d =>
+                                new DiscussionListItem
+                                {
+                                    DiscussionId = d.DiscussionId,
+                                    MediaType = d.MediaType,
+                                    FilmId = d.FilmId,
+                                    TelevisionId = d.TelevisionId,
+                                    SportId = d.SportId,
+                                    FilmTitle = d.Film.Title,
+                                    TelevisionTitle = d.TVShow.Title,
+                                    //Matchup = d.Sport.Matchup,
+                                    DiscussionTitle = d.DiscussionTitle,
+                                    CreatorId = d.CreatorId,
+                                    CreatorUsername = ctx.Users.Where(y => y.Id == d.CreatorId.ToString()).FirstOrDefault().UserName,
+                                    CreatedUTC = d.CreatedUTC,
+                                    PostCount = ctx.Posts.Where(p => p.DiscussionId == d.DiscussionId).Count(),
+                                    LastPostCreatorUsername = ctx.Users.Where(x => x.Id == ctx.Posts.Where(p => p.DiscussionId == d.DiscussionId).OrderByDescending(y => y.CreatedUTC).FirstOrDefault().CreatorId.ToString()).FirstOrDefault().UserName,
+                                    LastPostUTC = ctx.Posts.Where(p => p.DiscussionId == d.DiscussionId).OrderByDescending(x => x.CreatedUTC).FirstOrDefault().CreatedUTC
+                                }
+                            );
+                return query.OrderByDescending(x => x.PostCount).Take(6).ToArray();
             }
         }
 
@@ -141,9 +173,6 @@ namespace DiscussionApp.Services
                         CreatorUsername = ctx.Users.Where(y => y.Id == entity.CreatorId.ToString()).FirstOrDefault().UserName,
                         CreatedUTC = entity.CreatedUTC,
                         PostCount = ctx.Posts.Where(p => p.DiscussionId == entity.DiscussionId).Count(),
-                        //Film = entity.Film,
-                        //TVShow = entity.TVShow,
-                        //Sport = entity.Sport
                     };
             }
         }
@@ -159,12 +188,7 @@ namespace DiscussionApp.Services
 
                 entity.MediaType = model.MediaType;
                 entity.FilmId = model.FilmId;
-                //entity.TelevisionId = model.TelevisionId;
-                //entity.SportId = model.SportId;
                 entity.DiscussionTitle = model.DiscussionTitle;
-                //entity.Film = model.Film;
-                //entity.TVShow = model.TVShow;
-                //entity.Sport = model.Sport;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -180,13 +204,8 @@ namespace DiscussionApp.Services
                         .Single(e => e.DiscussionId == model.DiscussionId);
 
                 entity.MediaType = model.MediaType;
-                //entity.FilmId = model.FilmId;
                 entity.TelevisionId = model.TelevisionId;
-                //entity.SportId = model.SportId;
                 entity.DiscussionTitle = model.DiscussionTitle;
-                //entity.Film = model.Film;
-                //entity.TVShow = model.TVShow;
-                //entity.Sport = model.Sport;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -202,13 +221,8 @@ namespace DiscussionApp.Services
                         .Single(e => e.DiscussionId == model.DiscussionId);
 
                 entity.MediaType = model.MediaType;
-                //entity.FilmId = model.FilmId;
-                //entity.TelevisionId = model.TelevisionId;
                 entity.SportId = model.SportId;
                 entity.DiscussionTitle = model.DiscussionTitle;
-                //entity.Film = model.Film;
-                //entity.TVShow = model.TVShow;
-                //entity.Sport = model.Sport;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -262,11 +276,11 @@ namespace DiscussionApp.Services
                 return ctx.TVShows.Where(d => d.TelevisionId == televisionId).Single().Title;
         }
 
-        //public string GetSportTitle(int sportId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //        return ctx.Sports.Where(d => d.SportId == sportId).Single().Title;
-        //}
+        public string GetSportMatchup(int sportId)
+        {
+            using (var ctx = new ApplicationDbContext())
+                return ctx.Sports.Where(d => d.SportId == sportId).Single().Matchup;
+        }
 
         public string GetFilmId(int filmId)
         {

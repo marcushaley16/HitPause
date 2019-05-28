@@ -16,7 +16,5 @@ namespace DiscussionApp.Models
         public int SportId { get; set; }
         public string DiscussionTitle { get; set; }
         public virtual Film Film { get; set; }
-        public virtual TVShow TVShow { get; set; }
-        public virtual Sport Sport { get; set; }
     }
 }

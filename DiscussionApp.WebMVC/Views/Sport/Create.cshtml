@@ -6,22 +6,14 @@
 
 <h2>Create</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>SportCreate</h4>
+    <h4>New Game</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.MediaType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EnumDropDownListFor(model => model.MediaType, "Select Media Type", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.MediaType, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.League, htmlAttributes: new { @class = "control-label col-md-2" })

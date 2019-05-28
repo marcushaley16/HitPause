@@ -1,29 +1,174 @@
-﻿@{
+﻿@model IEnumerable<DiscussionApp.Models.DiscussionListItem>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>Hit II Pause</h1>
-    <p class="lead">In-depth information and discussions about your favorite films, television shows, and sporting events.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="carousel-wrapper">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators - the dots at the bottom of each slide -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img c@*lass="visible-md-block w-100" *@ src="~/Content/Assets/index.jpg" alt="First slide">
+                <div class="carousel-caption">
+                    <h2>Blade Runner 2049</h2>
+                    <h4>Roger Deakins won his first Oscar for Best Cinematography for Blade Runner 2049 after being nominated a previous thirteen times.</h4>
+                    <br />
+                </div>
+            </div>
+            <div class="item">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://www.youtube.com/embed/deSUQ7mZfWk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="carousel-caption">
+                    <h2>Westworld</h2>
+                    <h4>Discuss the new trailer for Season 3 of Westworld now!</h4>
+                    <br />
+                </div>
+            </div>
+            <div class="item">
+                <img src="~/Content/Assets/curry1.jpg" alt="Third slide">
+                <div class="carousel-caption">
+                    <h2>2019 NBA Finals</h2>
+                    <h2>Golden State Warriors vs Toronto Raptors</h2>
+                    <h4>Can the Warriors complete their 3-peat without Kevin Durant?</h4>
+                    <br />
+                </div>
+            </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 </div>
+<br />
 
+<h2 id="home-index-h2">Trending Discussions</h2>
+<br />
+
+<table class="table">
+    <tr class="discussion-table-headings">
+        <th>
+            @Html.DisplayNameFor(model => model.MediaType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscussionTitle)
+        </th>
+        <th>Media</th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostCount)
+        </th>
+        <th>
+            Created
+        </th>
+        <th>
+            Last Post
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.MediaType == DiscussionApp.Data.MediaType.Film)
+        {
+            <tr class="discussion-table-row-film">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MediaType)
+                </td>
+                <td>
+                    @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
+                </td>
+                <td>
+                    @Html.ActionLink(item.FilmTitle, "Details", "Film", new { id = item.FilmId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedUTC) by @Html.DisplayFor(modelItem => item.CreatorUsername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPostUTC) by @Html.DisplayFor(modelItem => item.LastPostCreatorUsername)
+                </td>
+            </tr>
+        }
+        if (item.MediaType == DiscussionApp.Data.MediaType.Television)
+        {
+            <tr class="discussion-table-row-tv">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MediaType)
+                </td>
+                <td>
+                    @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
+                </td>
+                <td>
+                    @Html.ActionLink(item.TelevisionTitle, "Details", "Television", new { id = item.TelevisionId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedUTC) by @Html.DisplayFor(modelItem => item.CreatorUsername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPostUTC) by @Html.DisplayFor(modelItem => item.LastPostCreatorUsername)
+                </td>
+            </tr>
+        }
+        if (item.MediaType == DiscussionApp.Data.MediaType.Sports)
+        {
+            <tr class="discussion-table-row-sport">
+                <td>
+                    @Html.DisplayFor(modelItem => item.MediaType)
+                </td>
+                <td>
+                    @Html.ActionLink(item.DiscussionTitle, "Index", "Post", new { discussionId = item.DiscussionId.ToString() }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", "Sport", new { id = item.SportId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedUTC) by @Html.DisplayFor(modelItem => item.CreatorUsername)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastPostUTC) by @Html.DisplayFor(modelItem => item.LastPostCreatorUsername)
+                </td>
+            </tr>
+        }
+    }
+</table>
+<br />
 <div class="row">
     <div class="col-md-4">
-        <h2>Film</h2>
+        <h2 class="home-h2">Film</h2>
         <p>
-            Our extensive database features information for all of your favorite films. Is The Godfather the greatest film of all time? What is in the briefcase in Pulp Fiction? Did Avengers: Endgame live up to the hype? Join the debate!
+            Our extensive database features information for all of your favorite films. Is The Godfather the greatest film of all time? What is in the briefcase in Pulp Fiction? Did Avengers: Endgame live up to the hype?
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p class="home-button-film">@Html.ActionLink("Discuss", "IndexFilm", "Discussion")</p>
     </div>
     <div class="col-md-4">
-        <h2>Television</h2>
-        <p>Is Breaking Bad the best show ever made? Let's debate. Can't wait for your friends to catch up on Game of Thrones? Come discuss the final season with us!</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2 class="home-h2">Television</h2>
+        <p>Is Breaking Bad the best show ever made? Share your thoughts! Can't wait for your friends to catch up on Game of Thrones? Come discuss the controversial final season with us!</p>
+        <p class="home-button-tv">@Html.ActionLink("Discuss", "IndexTelevision", "Discussion")</p>
     </div>
     <div class="col-md-4">
-        <h2>Sports</h2>
-        <p>Are the Warriors the best team in NBA history or are they ruining the game? Is Cristiano Ronaldo the best soccer player in the world? Share your opinion here!</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2 class="home-h2">Sports</h2>
+        <p>Are the Warriors the best team in NBA history or are they ruining the game? Is Cristiano Ronaldo the best soccer player in the world? What is the best rivalry in sports? Share your opinion here!</p>
+        <p class="home-button-sports">@Html.ActionLink("Discuss", "IndexSport", "Discussion")</p>
     </div>
 </div>
+<br />

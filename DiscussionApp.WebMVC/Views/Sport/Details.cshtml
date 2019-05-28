@@ -4,79 +4,40 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
+<h2 id="details-h2">Details</h2>
 <div>
-    <h4>SportDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.SportId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SportId)
-        </dd>*@
-
-        <dt>
-            @Html.DisplayNameFor(model => model.League)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.League)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HomeTeam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HomeTeam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AwayTeam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AwayTeam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Network)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Network)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Score)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Score)
-        </dd>
-
-    </dl>
+    <p class="details-nav">
+        @Html.ActionLink("Back to Games", "Index")
+    </p>
+    <p class="details-edit">
+        @Html.ActionLink("Edit Game", "Edit", new { id = Model.SportId })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SportId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<br />
+<div>
+    <hr />
+        <div class="table-sport-details">
+            <div class="div-sport-details">
+                <h2 id="media-title">@Html.DisplayFor(model => model.League)</h2>
+                <h2>
+                    @Html.DisplayFor(model => model.AwayTeam) at
+                    @Html.DisplayFor(model => model.HomeTeam)
+                </h2>
+                <h3>
+                    @Html.DisplayFor(model => model.Score)
+                </h3>
+                <br />
+                <p>
+                    @Html.DisplayFor(model => model.Time)
+                </p>
+                <p>
+                    @Html.DisplayFor(model => model.Location)
+                </p>
+                <br />
+                <p><b>Network</b></p>
+                <p>
+                    @Html.DisplayFor(model => model.Network)
+                </p>
+                <br />
+            </div>
+        </div>
