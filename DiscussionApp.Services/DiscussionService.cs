@@ -148,7 +148,7 @@ namespace DiscussionApp.Services
                                     LastPostUTC = ctx.Posts.Where(p => p.DiscussionId == d.DiscussionId).OrderByDescending(x => x.CreatedUTC).FirstOrDefault().CreatedUTC
                                 }
                             );
-                return query.OrderByDescending(x => x.PostCount).Take(6).ToArray();
+                return query.OrderByDescending(x => x.PostCount).Take(5).ToArray();
             }
         }
 

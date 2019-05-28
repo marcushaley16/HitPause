@@ -16,21 +16,16 @@ namespace DiscussionApp.WebMVC.Controllers
         public ActionResult Index(string discussionId)
         {
             Guid CurrentDiscussionId = Guid.Parse(discussionId);
-            //int CurrentFilmId = int.Parse(filmId);
 
-            //FilmService filmService = new FilmService();
             var service = CreatePostService();
             var discussionService = CreateDiscussionService();
-            //var filmService = CreateFilmService();
             var model = service.GetPostsByDiscussion(CurrentDiscussionId);
 
             this.Session["currentDiscussion"] = CurrentDiscussionId.ToString();
-            //this.Session["currentFilm"] = CurrentFilmId.ToString();
 
             ViewBag.DiscussionTitle = discussionService.GetDiscussionTitle(CurrentDiscussionId);
             ViewBag.Op = discussionService.GetDiscussionCreatorId(CurrentDiscussionId);
             ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
-            //ViewBag.FilmId = filmService.GetFilmById(CurrentFilmId);
 
             return View(model);
         }

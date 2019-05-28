@@ -19,10 +19,13 @@ namespace DiscussionApp.WebMVC.Controllers
         [Route("")]
         public ActionResult Index()
         {
-            var service = NewDiscussionService();
-            var model = service.GetTrendingDiscussions();
+            //var service = NewDiscussionService();
+            //var model = service.GetTrendingDiscussions();
 
-            ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
+            //ViewBag.UserId = Guid.Parse(User.Identity.GetUserId());
+
+            var service = new HomeService();
+            var model = service.GetTrendingDiscussions();
 
             return View(model);
         }
